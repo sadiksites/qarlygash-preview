@@ -819,3 +819,4 @@ h1,h2,h3{color:var(--q-navy)}
 .logo{flex-shrink:0;position:relative;z-index:1}
 .logo-text strong,.logo-text small{white-space:nowrap}
 @media(min-width:1280px){.nav{flex:1 1 auto;min-width:0;flex-wrap:wrap;justify-content:flex-end}}
+.nav-toggle{flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
