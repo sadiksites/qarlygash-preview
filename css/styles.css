@@ -813,10 +813,23 @@ h1,h2,h3{color:var(--q-navy)}
 .admin-card figcaption span{color:var(--muted);font-size:.92rem}
 .menu-table thead th{background:var(--q-sky-soft)}
 .nav .dd-btn,.nav>a{white-space:nowrap}
-@media(min-width:1280px) and (max-width:1440px){.nav .dd-btn,.nav>a{font-size:.82rem;padding:.4rem .3rem}.logo-text small{display:none}}
+@media(min-width:1280px){.nav .dd-btn,.nav>a{font-size:.82rem;padding:.4rem .3rem}.logo-text small{display:none}}
 /* header: brand never overlapped */
 .header-inner{display:flex;align-items:center;gap:1rem;min-width:0}
 .logo{flex-shrink:0;position:relative;z-index:1}
 .logo-text strong,.logo-text small{white-space:nowrap}
-@media(min-width:1280px){.nav{flex:1 1 auto;min-width:0;flex-wrap:wrap;justify-content:flex-end}}
+
 .nav-toggle{flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+
+/* nav: never wrap; JS adds html.nav-burger when it doesn't fit */
+@media(min-width:1280px){.nav{flex:0 1 auto;min-width:0;flex-wrap:nowrap!important;white-space:nowrap;margin-left:auto}}
+.nav>*{flex-shrink:0;white-space:nowrap}
+.nav>a.nav-home{display:none}
+html.nav-burger .nav-toggle{display:flex!important}
+html.nav-burger .nav{display:none!important;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:.5rem 1rem 1rem;box-shadow:var(--shadow);max-height:80vh;overflow:auto;white-space:normal}
+html.nav-burger .nav.is-open{display:flex!important}
+html.nav-burger .nav .dd-menu{position:static;box-shadow:none;border-top:0;padding:0 0 .3rem 1rem;min-width:0}
+html.nav-burger .nav .dd:not(.open):hover .dd-menu{display:none}
+html.nav-burger .nav .dd-btn,html.nav-burger .nav>a{text-align:left;width:100%;padding:.7rem .5rem;font-size:1rem;border-bottom:1px solid #eef3f7;border-radius:0}
+html.nav-burger .nav>a.nav-home{display:block}
+@media(max-width:1279px){.nav>a.nav-home{display:block}}
