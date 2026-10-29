@@ -7,5 +7,6 @@
   "kk": "<div class=\"admin-grid\"><figure class=\"admin-card\"><img src=\"assets/team/head.jpg?v=5\" alt=\"Меңгеруші\"><figcaption><strong>Нурсеитова Шынар Мұраталықызы</strong><span>Балабақша меңгерушісі</span><span>Білімі: жоғары · еңбек өтілі: 17 жыл · санаты: басшы-ұйымдастырушы</span></figcaption></figure><figure class=\"admin-card\"><img src=\"assets/team/metodist.jpg?v=5\" alt=\"Әдіскер\"><figcaption><strong>Тлеужанова Мадина Серікбайқызы</strong><span>Әдіскер</span><span>Білімі: жоғары · еңбек өтілі: 15 жыл · санаты: педагог-модератор</span></figcaption></figure></div>",
   "ru": "<div class=\"admin-grid\"><figure class=\"admin-card\"><img src=\"assets/team/head.jpg?v=5\" alt=\"Заведующая\"><figcaption><strong>Нурсеитова Чинара Мураталиевна</strong><span>Заведующая детским садом</span><span>Образование: высшее · стаж: 17 лет · категория: руководитель-организатор</span></figcaption></figure><figure class=\"admin-card\"><img src=\"assets/team/metodist.jpg?v=5\" alt=\"Методист\"><figcaption><strong>Тлеужанова Мадина Серикбаевна</strong><span>Методист</span><span>Образование: высшее · стаж: 15 лет · категория: педагог-модератор</span></figcaption></figure></div>"
  },
- "items": []
+ "items": [],
+ "ruReady": true
 }

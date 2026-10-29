@@ -54,5 +54,6 @@
   "kk": "<table class=\"info-table menu-table\"><thead><tr><th></th><th>Таңғы ас</th><th>Түскі ас</th><th>Бесін ас</th></tr></thead><tbody><tr><th>Дүйсенбі</th><td class=\"placeholder\" colspan=\"3\">Жақын арада жарияланады</td></tr><tr><th>Сейсенбі</th><td class=\"placeholder\" colspan=\"3\">Жақын арада жарияланады</td></tr><tr><th>Сәрсенбі</th><td class=\"placeholder\" colspan=\"3\">Жақын арада жарияланады</td></tr><tr><th>Бейсенбі</th><td class=\"placeholder\" colspan=\"3\">Жақын арада жарияланады</td></tr><tr><th>Жұма</th><td class=\"placeholder\" colspan=\"3\">Жақын арада жарияланады</td></tr></tbody></table>",
   "ru": "<table class=\"info-table menu-table\"><thead><tr><th></th><th>Завтрак</th><th>Обед</th><th>Полдник</th></tr></thead><tbody><tr><th>Понедельник</th><td class=\"placeholder\" colspan=\"3\">Скоро будет опубликовано</td></tr><tr><th>Вторник</th><td class=\"placeholder\" colspan=\"3\">Скоро будет опубликовано</td></tr><tr><th>Среда</th><td class=\"placeholder\" colspan=\"3\">Скоро будет опубликовано</td></tr><tr><th>Четверг</th><td class=\"placeholder\" colspan=\"3\">Скоро будет опубликовано</td></tr><tr><th>Пятница</th><td class=\"placeholder\" colspan=\"3\">Скоро будет опубликовано</td></tr></tbody></table>"
  },
- "items": []
+ "items": [],
+ "ruReady": true
 }

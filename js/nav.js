@@ -34,5 +34,5 @@
   }
   document.addEventListener('click',e=>{if(!nav.contains(e.target)) nav.querySelectorAll('.dd.open').forEach(x=>x.classList.remove('open'))});
   document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>setTimeout(()=>{render();document.dispatchEvent(new Event('qlang'))},0)));
-  fetch('data/menu.json?v=6').then(r=>r.json()).then(m=>{menu=m;window.QMENU=m;render();document.dispatchEvent(new Event('qmenu'))});
+  fetch('data/menu.json?v=10').then(r=>r.json()).then(m=>{menu=m;window.QMENU=m;render();document.dispatchEvent(new Event('qmenu'))});
 })();

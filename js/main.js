@@ -30,6 +30,9 @@
       ol.innerHTML = items.map((t) => "<li>" + t + "</li>").join("");
     });
 
+    const META={kk:{t:"«Қарлығаш» балалар бақшасы",d:"«Қарлығаш» балалар бақшасы — Әлжан ана ауылы, Қордай ауданы, Жамбыл облысы."},ru:{t:"Детский сад «Карлыгаш»",d:"Детский сад «Карлыгаш» — село Алжан ана, Кордайский район, Жамбылская область."}};
+    const M=META[lang]||META.kk; const md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute("content",M.d);
+    if(!document.getElementById("page")) document.title=M.t;
     document.querySelectorAll("[data-i18n-alt]").forEach((img) => {
       const key = img.getAttribute("data-i18n-alt");
       if (dict[key]) img.alt = dict[key];
