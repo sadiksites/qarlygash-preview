@@ -46,7 +46,7 @@ collections:
       label: Коллектив (карточки)
       label_singular: сотрудника
       widget: list
-      summary: '{{fields.name.kk}}'
+      summary: '{{fields.name.kk}} / {{fields.name.ru}}'
       fields:
       - name: photo
         label: Фото
@@ -57,11 +57,11 @@ collections:
         collapsed: false
         fields:
         - name: kk
-          label: Қазақша
+          label: 🇰🇿 Қазақша (на казахском)
           widget: string
           required: true
         - name: ru
-          label: Русский
+          label: 🇷🇺 Русский (на русском)
           widget: string
           required: false
       - name: role
@@ -70,11 +70,11 @@ collections:
         collapsed: false
         fields:
         - name: kk
-          label: Қазақша
+          label: 🇰🇿 Қазақша (на казахском)
           widget: string
           required: true
         - name: ru
-          label: Русский
+          label: 🇷🇺 Русский (на русском)
           widget: string
           required: false
       - name: exp
@@ -83,11 +83,11 @@ collections:
         collapsed: false
         fields:
         - name: kk
-          label: Қазақша
+          label: 🇰🇿 Қазақша (на казахском)
           widget: string
           required: false
         - name: ru
-          label: Русский
+          label: 🇷🇺 Русский (на русском)
           widget: string
           required: false
     - name: awards
@@ -111,18 +111,62 @@ collections:
       label_singular: текст
       widget: list
       allow_add: false
-      summary: '{{fields.kk}}'
+      summary: '{{fields.kk}}  ·  {{fields.ru}}'
       fields:
       - name: key
         label: Код (не менять)
         widget: hidden
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: text
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: text
         required: false
+  - name: menu
+    label: ☰ Меню сайта (Сайт мәзірі)
+    file: data/menu.json
+    fields:
+    - name: items
+      label: Пункты меню
+      label_singular: пункт
+      widget: list
+      allow_add: false
+      summary: '{{fields.kk}} / {{fields.ru}}'
+      fields:
+      - name: kk
+        label: 🇰🇿 Қазақша (на казахском)
+        widget: string
+      - name: ru
+        label: 🇷🇺 Русский (на русском)
+        widget: string
+        required: false
+      - name: href
+        widget: hidden
+        required: false
+      - name: slug
+        widget: hidden
+        required: false
+      - name: children
+        label: Подпункты
+        widget: list
+        required: false
+        allow_add: false
+        summary: '{{fields.kk}} / {{fields.ru}}'
+        fields:
+        - name: kk
+          label: 🇰🇿 Қазақша (на казахском)
+          widget: string
+        - name: ru
+          label: 🇷🇺 Русский (на русском)
+          widget: string
+          required: false
+        - name: slug
+          widget: hidden
+          required: false
+        - name: href
+          widget: hidden
+          required: false
   - name: as_maziri
     label: 🍲 Меню питания (Ас мәзірі)
     file: data/pages/as-maziri.json
@@ -133,18 +177,18 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - name: week
       label: Меню на неделю
       widget: list
       allow_add: false
-      summary: '{{fields.day.ru}}'
+      summary: '{{fields.day.kk}} / {{fields.day.ru}}'
       fields:
       - name: day
         label: День недели
@@ -152,11 +196,11 @@ collections:
         collapsed: false
         fields:
         - name: kk
-          label: Қазақша
+          label: 🇰🇿 Қазақша (на казахском)
           widget: string
           required: true
         - name: ru
-          label: Русский
+          label: 🇷🇺 Русский (на русском)
           widget: string
           required: false
       - name: breakfast
@@ -165,11 +209,11 @@ collections:
         collapsed: false
         fields:
         - name: kk
-          label: Қазақша
+          label: 🇰🇿 Қазақша (на казахском)
           widget: string
           required: false
         - name: ru
-          label: Русский
+          label: 🇷🇺 Русский (на русском)
           widget: string
           required: false
       - name: lunch
@@ -178,11 +222,11 @@ collections:
         collapsed: false
         fields:
         - name: kk
-          label: Қазақша
+          label: 🇰🇿 Қазақша (на казахском)
           widget: string
           required: false
         - name: ru
-          label: Русский
+          label: 🇷🇺 Русский (на русском)
           widget: string
           required: false
       - name: snack
@@ -191,11 +235,11 @@ collections:
         collapsed: false
         fields:
         - name: kk
-          label: Қазақша
+          label: 🇰🇿 Қазақша (на казахском)
           widget: string
           required: false
         - name: ru
-          label: Русский
+          label: 🇷🇺 Русский (на русском)
           widget: string
           required: false
     - &id001
@@ -204,7 +248,11 @@ collections:
       label_singular: запись
       widget: list
       required: false
-      summary: '{{fields.date}} — {{fields.title.kk}}'
+      summary: '{{fields.date}} — {{fields.title.kk}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}}
+        / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}}
+        / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}}
+        / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}}
+        / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}} / {{fields.title.ru}}'
       fields:
       - name: date
         label: 'Дата (например: 16 желтоқсан 2024)'
@@ -215,25 +263,27 @@ collections:
         widget: object
         fields:
         - name: kk
-          label: Қазақша
+          label: 🇰🇿 Қазақша (на казахском)
           widget: string
         - name: ru
-          label: Русский
+          label: 🇷🇺 Русский (на русском)
           widget: string
           required: false
+        collapsed: false
       - name: text
         label: Текст
         widget: object
         required: false
         fields:
         - name: kk
-          label: Қазақша
+          label: 🇰🇿 Қазақша (на казахском)
           widget: text
           required: false
         - name: ru
-          label: Русский
+          label: 🇷🇺 Русский (на русском)
           widget: text
           required: false
+        collapsed: false
       - name: images
         label: Фотографии
         widget: list
@@ -268,27 +318,27 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - name: schedule
       label: Режим дня — строки
       label_singular: строку
       widget: list
-      summary: '{{fields.time}} — {{fields.kk}}'
+      summary: '{{fields.time}} — {{fields.kk}} / {{fields.ru}}'
       fields:
       - name: time
         label: Время (08:00–08:30)
         widget: string
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - name: note
@@ -297,11 +347,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: false
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -319,11 +369,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -341,11 +391,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -363,11 +413,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -385,11 +435,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - name: html
@@ -398,11 +448,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: markdown
         required: false
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: markdown
         required: false
       required: false
@@ -421,11 +471,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -443,11 +493,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -465,11 +515,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - name: html
@@ -478,11 +528,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: markdown
         required: false
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: markdown
         required: false
       required: false
@@ -501,11 +551,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -523,11 +573,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -545,11 +595,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - name: html
@@ -558,11 +608,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: markdown
         required: false
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: markdown
         required: false
       required: false
@@ -581,11 +631,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -603,11 +653,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -625,11 +675,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - name: intro
@@ -638,11 +688,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: text
         required: false
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: text
         required: false
       required: false
@@ -661,11 +711,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -683,11 +733,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -705,11 +755,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -727,11 +777,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -749,11 +799,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -771,11 +821,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -793,11 +843,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -815,11 +865,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -837,11 +887,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -859,11 +909,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -881,11 +931,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -903,11 +953,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -925,11 +975,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -947,11 +997,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -969,11 +1019,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - name: html
@@ -982,11 +1032,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: markdown
         required: false
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: markdown
         required: false
       required: false
@@ -1005,11 +1055,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - name: html
@@ -1018,11 +1068,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: markdown
         required: false
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: markdown
         required: false
       required: false
@@ -1041,11 +1091,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -1063,11 +1113,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -1085,11 +1135,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -1107,11 +1157,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -1129,11 +1179,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -1151,11 +1201,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -1173,11 +1223,11 @@ collections:
       collapsed: false
       fields:
       - name: kk
-        label: Қазақша
+        label: 🇰🇿 Қазақша (на казахском)
         widget: string
         required: true
       - name: ru
-        label: Русский
+        label: 🇷🇺 Русский (на русском)
         widget: string
         required: false
     - *id001
@@ -1185,3 +1235,4 @@ collections:
       label: Русский перевод записей готов
       widget: boolean
       required: false
+  description: 'Каждый текст здесь в двух языках: поле «🇰🇿 Қазақша» — казахская версия сайта, поле «🇷🇺 Русский» — русская. Заполняйте оба и нажмите «Опубликовать».'
