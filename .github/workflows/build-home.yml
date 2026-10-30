@@ -1,0 +1,20 @@
+name: Rebuild home page from CMS data
+on:
+  push:
+    branches: [main]
+    paths: ['data/home.json', 'tools/build_home.py']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install pillow && python tools/build_home.py
+      - run: |
+          git config user.name "cms-bot"; git config user.email "cms-bot@users.noreply.github.com"
+          git add index.html js/i18n.js
+          git diff --cached --quiet || (git commit -m "Rebuild home from data/home.json" && git push)

@@ -22,13 +22,16 @@
     document.title=tr(data.title)+(L==='ru'?' — детский сад «Карлыгаш»':' — «Қарлығаш» балалар бақшасы');
     let h=`<h1>${esc(tr(data.title))}</h1>`;
     if(data.intro) h+=`<div class="intro">${para(tr(data.intro))}</div>`;
+    if(data.schedule&&data.schedule.length) h+=`<div class="rich"><table class="info-table"><tbody>${data.schedule.map(r=>`<tr><th>${esc(r.time)}</th><td>${esc(r[L]||r.kk)}</td></tr>`).join('')}</tbody></table>${tr(data.note)?`<p class="note">${esc(tr(data.note))}</p>`:''}</div>`;
+    if(data.week&&data.week.length){const H=L==='ru'?['Завтрак','Обед','Полдник']:['Таңғы ас','Түскі ас','Бесін ас'];const c=v=>esc(v&&typeof v==='object'?(v[L]||v.kk||''):(v||''));
+      h+=`<div class="rich"><table class="info-table menu-table"><thead><tr><th></th>${H.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${data.week.map(w=>{const f=['breakfast','lunch','snack'].map(k=>c(w[k]));return `<tr><th>${esc(tr(w.day))}</th>${f.some(Boolean)?f.map(x=>`<td>${x}</td>`).join(''):`<td class="placeholder" colspan="3">${PH[L]}</td>`}</tr>`}).join('')}</tbody></table></div>`;}
     if(data.html) h+=`<div class="rich">${tr(data.html)}</div>`;
     const items=data.items||[];
     if(items.length){ if(L==='ru'&&!data.ruReady) h+=`<p class="note">${LBL.ru.src}</p>`; h+=items.map(item).join(''); }
-    else if(!data.html) h+=`<div class="placeholder-box"><span aria-hidden="true">🕊️</span><p>${PH[L]}</p></div>`;
+    else if(!data.html&&!data.schedule&&!data.week) h+=`<div class="placeholder-box"><span aria-hidden="true">🕊️</span><p>${PH[L]}</p></div>`;
     root.innerHTML=h;
     root.querySelectorAll('.more').forEach(b=>b.addEventListener('click',()=>{const t=b.previousElementSibling;t.classList.toggle('clamp');b.textContent=t.classList.contains('clamp')?LBL[lang()].more:LBL[lang()].less}));
   }
   document.addEventListener('qlang',render);
-  fetch('data/pages/'+encodeURIComponent(slug)+'.json?v=10').then(r=>{if(!r.ok) throw 0; return r.json()}).then(d=>{data=d;render()}).catch(()=>{data={title:{kk:'Бет табылмады',ru:'Страница не найдена'}};render()});
+  fetch('data/pages/'+encodeURIComponent(slug)+'.json?v='+Date.now().toString().slice(0,-5)).then(r=>{if(!r.ok) throw 0; return r.json()}).then(d=>{data=d;render()}).catch(()=>{data={title:{kk:'Бет табылмады',ru:'Страница не найдена'}};render()});
 })();

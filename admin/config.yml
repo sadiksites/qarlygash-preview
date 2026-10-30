@@ -1,0 +1,1181 @@
+locale: ru
+backend:
+  name: git-gateway
+  repo: sadiksites/qarlygash-preview
+  branch: main
+  identity_url: https://auth.decapbridge.com/sites/DECAPBRIDGE_SITE_ID
+  gateway_url: https://gateway.decapbridge.com
+  squash_merges: true
+  commit_messages:
+    create: 'CMS: создано {{slug}} — {{author-name}}'
+    update: 'CMS: изменено {{slug}} — {{author-name}}'
+    delete: 'CMS: удалено {{slug}} — {{author-name}}'
+    uploadMedia: 'CMS: фото {{path}} — {{author-name}}'
+    deleteMedia: 'CMS: удалено фото {{path}} — {{author-name}}'
+    openAuthoring: '{{message}}'
+site_url: https://sadiksites.github.io/qarlygash-preview/
+display_url: https://sadiksites.github.io/qarlygash-preview/
+logo_url: https://sadiksites.github.io/qarlygash-preview/assets/logo.png
+media_folder: assets/uploads
+public_folder: assets/uploads
+media_library:
+  max_file_size: 8000000
+collections:
+- name: site
+  label: Сайт «Қарлығаш»
+  editor:
+    preview: false
+  files:
+  - name: home
+    label: 🏠 Главная страница
+    file: data/home.json
+    fields:
+    - name: hero
+      label: Главное фото (вверху)
+      widget: image
+    - name: head_photo
+      label: Фото заведующей
+      widget: image
+    - name: team
+      label: Коллектив (карточки)
+      label_singular: сотрудника
+      widget: list
+      summary: '{{fields.name.kk}}'
+      fields:
+      - name: photo
+        label: Фото
+        widget: image
+      - name: name
+        label: ФИО
+        widget: object
+        collapsed: false
+        fields:
+        - name: kk
+          label: Қазақша
+          widget: string
+          required: true
+        - name: ru
+          label: Русский
+          widget: string
+          required: false
+      - name: role
+        label: Должность
+        widget: object
+        collapsed: false
+        fields:
+        - name: kk
+          label: Қазақша
+          widget: string
+          required: true
+        - name: ru
+          label: Русский
+          widget: string
+          required: false
+      - name: exp
+        label: Стаж и категория
+        widget: object
+        collapsed: false
+        fields:
+        - name: kk
+          label: Қазақша
+          widget: string
+          required: false
+        - name: ru
+          label: Русский
+          widget: string
+          required: false
+    - name: awards
+      label: Награды (фото грамот)
+      widget: list
+      summary: '{{fields.image}}'
+      fields:
+      - name: image
+        label: Фото
+        widget: image
+    - name: events
+      label: Фотогалерея мероприятий
+      widget: list
+      summary: '{{fields.image}}'
+      fields:
+      - name: image
+        label: Фото
+        widget: image
+    - name: texts
+      label: Тексты главной страницы
+      label_singular: текст
+      widget: list
+      allow_add: false
+      summary: '{{fields.kk}}'
+      fields:
+      - name: key
+        label: Код (не менять)
+        widget: hidden
+      - name: kk
+        label: Қазақша
+        widget: text
+      - name: ru
+        label: Русский
+        widget: text
+        required: false
+  - name: as_maziri
+    label: 🍲 Меню питания (Ас мәзірі)
+    file: data/pages/as-maziri.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - name: week
+      label: Меню на неделю
+      widget: list
+      allow_add: false
+      summary: '{{fields.day.ru}}'
+      fields:
+      - name: day
+        label: День недели
+        widget: object
+        collapsed: false
+        fields:
+        - name: kk
+          label: Қазақша
+          widget: string
+          required: true
+        - name: ru
+          label: Русский
+          widget: string
+          required: false
+      - name: breakfast
+        label: Завтрак / Таңғы ас
+        widget: object
+        collapsed: false
+        fields:
+        - name: kk
+          label: Қазақша
+          widget: string
+          required: false
+        - name: ru
+          label: Русский
+          widget: string
+          required: false
+      - name: lunch
+        label: Обед / Түскі ас
+        widget: object
+        collapsed: false
+        fields:
+        - name: kk
+          label: Қазақша
+          widget: string
+          required: false
+        - name: ru
+          label: Русский
+          widget: string
+          required: false
+      - name: snack
+        label: Полдник / Бесін ас
+        widget: object
+        collapsed: false
+        fields:
+        - name: kk
+          label: Қазақша
+          widget: string
+          required: false
+        - name: ru
+          label: Русский
+          widget: string
+          required: false
+    - &id001
+      name: items
+      label: Записи (новости, посты)
+      label_singular: запись
+      widget: list
+      required: false
+      summary: '{{fields.date}} — {{fields.title.kk}}'
+      fields:
+      - name: date
+        label: 'Дата (например: 16 желтоқсан 2024)'
+        widget: string
+        required: false
+      - name: title
+        label: Заголовок
+        widget: object
+        fields:
+        - name: kk
+          label: Қазақша
+          widget: string
+        - name: ru
+          label: Русский
+          widget: string
+          required: false
+      - name: text
+        label: Текст
+        widget: object
+        required: false
+        fields:
+        - name: kk
+          label: Қазақша
+          widget: text
+          required: false
+        - name: ru
+          label: Русский
+          widget: text
+          required: false
+      - name: images
+        label: Фотографии
+        widget: list
+        required: false
+        field:
+          name: image
+          label: Фото
+          widget: image
+      - name: files
+        label: Документы (PDF и др.)
+        widget: list
+        required: false
+        fields:
+        - name: name
+          label: Название
+          widget: string
+          required: false
+        - name: url
+          label: Файл
+          widget: file
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: kun_tartibi
+    label: 🕗 Режим дня (Күн тәртібі)
+    file: data/pages/kun-tartibi.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - name: schedule
+      label: Режим дня — строки
+      label_singular: строку
+      widget: list
+      summary: '{{fields.time}} — {{fields.kk}}'
+      fields:
+      - name: time
+        label: Время (08:00–08:30)
+        widget: string
+      - name: kk
+        label: Қазақша
+        widget: string
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - name: note
+      label: Примечание под таблицей
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: false
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: toptar
+    label: 👧 Группы (Топтар)
+    file: data/pages/toptar.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: pedagogter
+    label: 👩‍🏫 Педагоги
+    file: data/pages/pedagogter.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: akparat
+    label: 📰 Новости (Ақпарат)
+    file: data/pages/akparat.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: bailanys
+    label: 📞 Контакты (Байланыс)
+    file: data/pages/bailanys.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - name: html
+      label: Текст страницы (с оформлением)
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: markdown
+        required: false
+      - name: ru
+        label: Русский
+        widget: markdown
+        required: false
+      required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: normativtik_kuzhattar
+    label: 📄 Документы (Нормативтік құжаттар)
+    file: data/pages/normativtik-kuzhattar.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: adistemelik
+    label: Методическая работа
+    file: data/pages/adistemelik.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: akimshilik
+    label: Администрация
+    file: data/pages/akimshilik.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - name: html
+      label: Текст страницы (с оформлением)
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: markdown
+        required: false
+      - name: ru
+        label: Русский
+        widget: markdown
+        required: false
+      required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: ashyk_oku
+    label: Открытые занятия
+    file: data/pages/ashyk-oku.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: ata_analar_saualnamasy
+    label: Анкетирование родителей
+    file: data/pages/ata-analar-saualnamasy.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: ata_analarga
+    label: Родителям
+    file: data/pages/ata-analarga.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - name: html
+      label: Текст страницы (с оформлением)
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: markdown
+        required: false
+      - name: ru
+        label: Русский
+        widget: markdown
+        required: false
+      required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: attestaciya
+    label: Аттестация
+    file: data/pages/attestaciya.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: balalar_zhumysy
+    label: Работы детей
+    file: data/pages/balalar-zhumysy.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: biz_turaly
+    label: О детском саде
+    file: data/pages/biz-turaly.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - name: intro
+      label: Вступление
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: text
+        required: false
+      - name: ru
+        label: Русский
+        widget: text
+        required: false
+      required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: bos_zhumys
+    label: Вакансии
+    file: data/pages/bos-zhumys.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: ciklogramma
+    label: Циклограмма
+    file: data/pages/ciklogramma.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: ertengilikter
+    label: Утренники
+    file: data/pages/ertengilikter.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: kamkorshylyk_kenes
+    label: Попечительский совет
+    file: data/pages/kamkorshylyk-kenes.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: karzhylyk_korsetkishter
+    label: Основные показатели финансовой деятельности
+    file: data/pages/karzhylyk-korsetkishter.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: kelisim_sharttar
+    label: Договоры
+    file: data/pages/kelisim-sharttar.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: konsultaciyalyk_punkt
+    label: Консультационный пункт
+    file: data/pages/konsultaciyalyk-punkt.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: mamandar_zhospary
+    label: План работы специалистов
+    file: data/pages/mamandar-zhospary.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: memlekettik_kyzmetter
+    label: Государственные услуги
+    file: data/pages/memlekettik-kyzmetter.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: monitoring
+    label: Мониторинг
+    file: data/pages/monitoring.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: oku_zhospary
+    label: Учебный план по образовательным областям
+    file: data/pages/oku-zhospary.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: ozin_ozi_bagalau
+    label: Самооценка
+    file: data/pages/ozin-ozi-bagalau.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: perspektivalyk_zhospar
+    label: Перспективный план
+    file: data/pages/perspektivalyk-zhospar.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: portfolio
+    label: Портфолио воспитателей
+    file: data/pages/portfolio.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: prezident_zholdauy
+    label: Послание Президента
+    file: data/pages/prezident-zholdauy.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - name: html
+      label: Текст страницы (с оформлением)
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: markdown
+        required: false
+      - name: ru
+        label: Русский
+        widget: markdown
+        required: false
+      required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: ramizder
+    label: Государственные символы
+    file: data/pages/ramizder.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - name: html
+      label: Текст страницы (с оформлением)
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: markdown
+        required: false
+      - name: ru
+        label: Русский
+        widget: markdown
+        required: false
+      required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: sapalyk_monitoring
+    label: Мониторинг качества
+    file: data/pages/sapalyk-monitoring.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: satyp_alu
+    label: План государственных закупок
+    file: data/pages/satyp-alu.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: shtattyk_keste
+    label: Штатное расписание и тарификационный список
+    file: data/pages/shtattyk-keste.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: specifika_149
+    label: Специфика 149
+    file: data/pages/specifika-149.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: sybailas
+    label: Противодействие коррупции
+    file: data/pages/sybailas.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: zheke_karzhylandyru
+    label: Индивидуальный план финансирования
+    file: data/pages/zheke-karzhylandyru.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
+  - name: zhetistikter
+    label: Наши достижения
+    file: data/pages/zhetistikter.json
+    fields:
+    - name: title
+      label: Название страницы
+      widget: object
+      collapsed: false
+      fields:
+      - name: kk
+        label: Қазақша
+        widget: string
+        required: true
+      - name: ru
+        label: Русский
+        widget: string
+        required: false
+    - *id001
+    - name: ruReady
+      label: Русский перевод записей готов
+      widget: boolean
+      required: false
