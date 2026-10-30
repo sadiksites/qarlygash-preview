@@ -18,8 +18,6 @@ display_url: https://sadiksites.github.io/qarlygash-preview/
 logo_url: https://sadiksites.github.io/qarlygash-preview/assets/logo.png
 media_folder: assets/uploads
 public_folder: assets/uploads
-media_library:
-  max_file_size: 8000000
 collections:
 - name: site
   label: Сайт «Қарлығаш»
