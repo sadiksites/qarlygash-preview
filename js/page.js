@@ -27,7 +27,7 @@
       h+=`<div class="rich"><table class="info-table menu-table"><thead><tr><th></th>${H.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${data.week.map(w=>{const f=['breakfast','lunch','snack'].map(k=>c(w[k]));return `<tr><th>${esc(tr(w.day))}</th>${f.some(Boolean)?f.map(x=>`<td>${x}</td>`).join(''):`<td class="placeholder" colspan="3">${PH[L]}</td>`}</tr>`}).join('')}</tbody></table></div>`;}
     if(data.html) h+=`<div class="rich">${tr(data.html)}</div>`;
     const items=data.items||[];
-    if(items.length){ if(L==='ru'&&!data.ruReady) h+=`<p class="note">${LBL.ru.src}</p>`; h+=items.map(item).join(''); }
+    if(items.length){ h+=items.map(item).join(''); }
     else if(!data.html&&!data.schedule&&!data.week) h+=`<div class="placeholder-box"><span aria-hidden="true">🕊️</span><p>${PH[L]}</p></div>`;
     root.innerHTML=h;
     root.querySelectorAll('.more').forEach(b=>b.addEventListener('click',()=>{const t=b.previousElementSibling;t.classList.toggle('clamp');b.textContent=t.classList.contains('clamp')?LBL[lang()].more:LBL[lang()].less}));
